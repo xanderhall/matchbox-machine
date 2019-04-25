@@ -13,7 +13,9 @@ export default function InfoPanel(props) {
   return (
     <div className="game-info">
       <div>{props.status}</div>
-      <ol>{moveList}</ol>
+      <ol>
+        <StepButton step={0} jumpTo={() => props.jumpTo(0)}></StepButton>
+      </ol>
     </div>
   );
 }
