@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Board from './Board';
 import InfoPanel from './InfoPanel';
-import MatchboxMachine from '../bot/machine';
+import MatchboxMachine from '../bot/Machine';
 
 export default class Game extends Component {
   constructor(props) {
