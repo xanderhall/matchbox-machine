@@ -1,13 +1,13 @@
 {
-  "main.css": "/xanderhall/matchbox-machine/static/css/main.77c0d737.chunk.css",
-  "main.js": "/xanderhall/matchbox-machine/static/js/main.d1b9e11a.chunk.js",
-  "main.js.map": "/xanderhall/matchbox-machine/static/js/main.d1b9e11a.chunk.js.map",
-  "runtime~main.js": "/xanderhall/matchbox-machine/static/js/runtime~main.fb85b23a.js",
-  "runtime~main.js.map": "/xanderhall/matchbox-machine/static/js/runtime~main.fb85b23a.js.map",
-  "static/js/2.7e3c310b.chunk.js": "/xanderhall/matchbox-machine/static/js/2.7e3c310b.chunk.js",
-  "static/js/2.7e3c310b.chunk.js.map": "/xanderhall/matchbox-machine/static/js/2.7e3c310b.chunk.js.map",
-  "index.html": "/xanderhall/matchbox-machine/index.html",
-  "precache-manifest.74eec78eae117794104f002c85ed6241.js": "/xanderhall/matchbox-machine/precache-manifest.74eec78eae117794104f002c85ed6241.js",
-  "service-worker.js": "/xanderhall/matchbox-machine/service-worker.js",
-  "static/css/main.77c0d737.chunk.css.map": "/xanderhall/matchbox-machine/static/css/main.77c0d737.chunk.css.map"
+  "main.css": "/matchbox-machine/static/css/main.77c0d737.chunk.css",
+  "main.js": "/matchbox-machine/static/js/main.d1b9e11a.chunk.js",
+  "main.js.map": "/matchbox-machine/static/js/main.d1b9e11a.chunk.js.map",
+  "runtime~main.js": "/matchbox-machine/static/js/runtime~main.4bc065b5.js",
+  "runtime~main.js.map": "/matchbox-machine/static/js/runtime~main.4bc065b5.js.map",
+  "static/js/2.7e3c310b.chunk.js": "/matchbox-machine/static/js/2.7e3c310b.chunk.js",
+  "static/js/2.7e3c310b.chunk.js.map": "/matchbox-machine/static/js/2.7e3c310b.chunk.js.map",
+  "index.html": "/matchbox-machine/index.html",
+  "precache-manifest.abc6f189e03a7d8394cd92b1de8d3339.js": "/matchbox-machine/precache-manifest.abc6f189e03a7d8394cd92b1de8d3339.js",
+  "service-worker.js": "/matchbox-machine/service-worker.js",
+  "static/css/main.77c0d737.chunk.css.map": "/matchbox-machine/static/css/main.77c0d737.chunk.css.map"
 }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/xanderhall/matchbox-machine/precache-manifest.74eec78eae117794104f002c85ed6241.js"
+  "/matchbox-machine/precache-manifest.abc6f189e03a7d8394cd92b1de8d3339.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/xanderhall/matchbox-machine/index.html", {
+workbox.routing.registerNavigationRoute("/matchbox-machine/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
