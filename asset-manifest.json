@@ -1,13 +1,15 @@
 {
   "main.css": "/matchbox-machine/static/css/main.77c0d737.chunk.css",
-  "main.js": "/matchbox-machine/static/js/main.a129762b.chunk.js",
-  "main.js.map": "/matchbox-machine/static/js/main.a129762b.chunk.js.map",
+  "main.js": "/matchbox-machine/static/js/main.33447fcc.chunk.js",
+  "main.js.map": "/matchbox-machine/static/js/main.33447fcc.chunk.js.map",
   "runtime~main.js": "/matchbox-machine/static/js/runtime~main.4bc065b5.js",
   "runtime~main.js.map": "/matchbox-machine/static/js/runtime~main.4bc065b5.js.map",
-  "static/js/2.7e3c310b.chunk.js": "/matchbox-machine/static/js/2.7e3c310b.chunk.js",
-  "static/js/2.7e3c310b.chunk.js.map": "/matchbox-machine/static/js/2.7e3c310b.chunk.js.map",
+  "static/css/2.ab142cb7.chunk.css": "/matchbox-machine/static/css/2.ab142cb7.chunk.css",
+  "static/js/2.5c6b6cb4.chunk.js": "/matchbox-machine/static/js/2.5c6b6cb4.chunk.js",
+  "static/js/2.5c6b6cb4.chunk.js.map": "/matchbox-machine/static/js/2.5c6b6cb4.chunk.js.map",
   "index.html": "/matchbox-machine/index.html",
-  "precache-manifest.8ad7e28df3f899564c0f7ecea3da0a83.js": "/matchbox-machine/precache-manifest.8ad7e28df3f899564c0f7ecea3da0a83.js",
+  "precache-manifest.0ddde0b570e0d2e13b8cd84572b01f2d.js": "/matchbox-machine/precache-manifest.0ddde0b570e0d2e13b8cd84572b01f2d.js",
   "service-worker.js": "/matchbox-machine/service-worker.js",
+  "static/css/2.ab142cb7.chunk.css.map": "/matchbox-machine/static/css/2.ab142cb7.chunk.css.map",
   "static/css/main.77c0d737.chunk.css.map": "/matchbox-machine/static/css/main.77c0d737.chunk.css.map"
 }
