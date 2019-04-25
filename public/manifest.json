@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Matchbox Tic-Tac-Toe",
+  "name": "Matchbox machine for Tic-Tac-Toe",
   "icons": [
     {
       "src": "favicon.ico",
