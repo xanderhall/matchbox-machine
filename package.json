@@ -2,7 +2,7 @@
   "name": "react-matchbox",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/xanderhall/matchbox-machine",
+  "homepage": "https://xanderhall.github.io/matchbox-machine/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
