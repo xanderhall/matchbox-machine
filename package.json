@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://xanderhall.github.io/matchbox-machine/",
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
     "react": "^16.8.6",
