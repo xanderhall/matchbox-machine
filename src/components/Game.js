@@ -20,7 +20,7 @@ export default class Game extends Component {
     const history = this.state.history.slice(0, this.state.turn + 1);
     const squares = history[history.length - 1].squares.slice();
 
-    if (determineWinningState(squares) || squares[i]) {
+    if (determineEndCondition(squares) || squares[i]) {
       return;
     }
 
@@ -29,27 +29,38 @@ export default class Game extends Component {
     this.setState({
       history: [...history, { squares: squares, lastMove: { square: i, player: player } }],
       turn: history.length,
+    }, () => {
+      if (player === 'X') {
+        this.state.evaluateMachineMove({
+          state: squares,
+          turn: this.state.turn,
+          legalMoves: getLegalMoves(squares),
+          endCondition: determineEndCondition(squares),
+          registerMove: this.handleClick
+        })
+      }
     });
+
+    // Allow machine to respond
   }
 
   render() {
-    const history = this.state.history;
+    const history = this.state.history.slice();
     const current = history[this.state.turn];
     const player = ((this.state.turn % 2) === 0 ? 'X' : 'O');
-    const isGameOver = determineWinningState(current.squares);
+    const endCondition = determineEndCondition(current.squares);
 
-    let status = 'Next player: ' + player;
-    let endCondition;
-    if (isGameOver) {
-      endCondition = current.lastMove.player;
+    let status;
+    if (endCondition === 'X' || endCondition === 'O') {
       status = 'Winner: ' + endCondition;
-    } else if (this.state.turn === 9) {
-      endCondition = 'T';
+    } else if (endCondition === 'T') {
       status = 'Tie';
+    } else {
+      status = 'Next player: ' + player;
     }
 
     return (
-      <div className="game">
+      <div className="container-fluid">
         <Board
           squares={current.squares}
           onClick={this.handleClick}
@@ -60,12 +71,7 @@ export default class Game extends Component {
           jumpTo={(i) => this.setState({ turn: i })}
         />
         <MatchboxMachine
-          gameState={current}
-          registerMove={this.handleClick}
-          shouldRegisterMove={player === 'O' && !endCondition}
-          legalMoves={getLegalMoves(current.squares)}
-          endCondition={endCondition}
-          turn={this.state.turn}
+          getMachineEvaluationFunction={(func) => this.setState({ evaluateMachineMove: func })}
         />
       </div>
     );
@@ -80,7 +86,7 @@ function getLegalMoves(squares) {
   return legalMoves;
 }
 
-function determineWinningState(squares) {
+function determineEndCondition(squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -91,8 +97,14 @@ function determineWinningState(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  return lines.some((line) => {
-    const [a, b, c] = line;
-    return squares[a] && squares[a] === squares[b] && squares[a] === squares[c];
-  });
+  for (const line in lines) {
+    const [a, b, c] = lines[line];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  if (!squares.some(square => !square)) {
+    return 'T';
+  }
+  return false;
 }
