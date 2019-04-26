@@ -79,11 +79,7 @@ export default class Game extends Component {
 }
 
 function getLegalMoves(squares) {
-  const legalMoves = [];
-  squares.forEach((mark, i) => {
-    if (!mark) legalMoves.push(i);
-  });
-  return legalMoves;
+  return Object.keys(squares).filter(i => !squares[i]);
 }
 
 function determineEndCondition(squares) {
