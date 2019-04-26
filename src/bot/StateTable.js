@@ -6,22 +6,21 @@ export default class StateTable extends Component {
   render() {
     return (
       <table class='table table-borderless' className='state-table'>
-        {this.renderRows()}
+        <tbody>{this.renderRows()}</tbody>
       </table>
     )
   }
 
   renderRows() {
-    const entries = [...this.props.states.entries()];
-    const sortedEntries = orderBy(entries, (e) => {
-      const board = JSON.parse(e[0]);
-      return board.filter(square => !square).length;
-    }, 'desc');
+    const entries = Object.entries(this.props.states);
+    const sortedEntries = orderBy(entries, (e) => JSON.parse(e[0]).filter(square => !square).length , 'desc');
+
     return sortedEntries.map((entry) => {
       const [key, moves] = entry;
       return (
         <tr key={key}>
-          <td><Board squares={JSON.parse(key)} /></td><td>{this.renderWeightTable(moves)}</td>
+          <td><Board squares={JSON.parse(key)} /></td>
+          <td class='h-100'>{this.renderWeightTable(moves)}</td>
         </tr>
       );
     });
@@ -35,7 +34,7 @@ export default class StateTable extends Component {
         <th key={move}>({Math.floor(move / 3)},{move % 3})</th>
       );
       bodies.push(
-        <td key={move} class={weight ? 'alert alert-success' : 'alert alert-danger'}>{weight}</td>
+        <td key={move} className={weight ? 'alert alert-success' : 'alert alert-danger'}>{weight}</td>
       )
     });
     return (
