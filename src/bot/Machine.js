@@ -7,7 +7,7 @@ export default class MatchboxMachine extends React.Component {
     super(props);
     this.props.getMachineEvaluationFunction(this.resolveMove.bind(this));
     this.state = {
-      stateMap: new Map(),
+      decisionMap: {},
       history: [],
     }
   }
@@ -19,39 +19,38 @@ export default class MatchboxMachine extends React.Component {
     }
     const state = props.state;
     const key = JSON.stringify(state);
-    const map = this.state.stateMap;
+    const map = {...this.state.decisionMap};
     const history = this.state.history.slice(0, props.turn + 1);
 
     // Check if current game state has previously been evaluated
-    if (!map.has(key)) {
-      const weightMap = [];
-      props.legalMoves.forEach((move) => weightMap[move] = 1);
-      map.set(key, weightMap);
+    if (!map.hasOwnProperty(key)) {
+      map[key] = [];
+      props.legalMoves.forEach(move => map[key][move] = 1)
     }
 
-    // Get list of available moves that haven't been 'marked off'
-    const availableMoves = map.get(key);
+    // Get list of best moves. This setup allows for adjustment from winning.
+    const moves = map[key];
+    const highestWeight = moves.reduce((a, b) => Math.max(a, b));
 
-    const usefulMoves = [];
-    availableMoves.forEach((weight, move) => {
-      if (weight > 0) usefulMoves.push(move);
-    })
+    const usefulMoves = Object.keys(moves).filter(move => moves[move] === highestWeight);
     const randomMove = sample(usefulMoves);
 
     // Store the move for this game
-    history[props.turn] = { state: state, move: randomMove };
+    history.push( { state: state, move: randomMove, turn: props.turn });
     this.setState({
       history: history,
-    });
+      decisionMap: map
+    }, () => props.registerMove(randomMove));
 
-    // Register the move with the game
-    props.registerMove(randomMove);
   }
 
   resolveEnd(type) {
-    if (type === 'X') {
+    // translated from current tic-tac-toe endcon, will need to be refactored
+    const translation = {'X': 'L', 'O': 'W'}
+    const endType = translation[type];
+    if (endType === 'L') {
       this.resolveLoss();
-    } else if (type === 'O') {
+    } else if (endType === 'W') {
       this.resolveWin();
     } else {
       this.resolveTie();
@@ -68,15 +67,18 @@ export default class MatchboxMachine extends React.Component {
 
   resolveLoss() {
     // Set weight of last move used to 0
-    const lastMove = this.state.history.slice().pop();
-    const map = this.state.stateMap;
-    const key = JSON.stringify(lastMove.state);
-    const availableMoves = map.get(key).slice();
-    availableMoves[lastMove.move] = 0;
-    map.set(key, availableMoves);
-    if (availableMoves.every(weight => !weight)) {
-      this.resolveLoss();
-    }
+    const map = {...this.state.decisionMap};
+    const history = this.state.history.slice();
+    let lastMove, key;
+    do {
+      lastMove = history.pop();
+      key = JSON.stringify(lastMove.state);
+      map[key][lastMove.move] = 0;
+    } while (map[key].every(weight => weight === 0));
+
+    this.setState({
+      decisionMap: map
+    })
   }
 
   render() {
@@ -87,7 +89,7 @@ export default class MatchboxMachine extends React.Component {
           As you play, I'll get better at this game.
           Below, you can see the choices I'm making each time you make a move.
         </div>
-        <StateTable states={this.state.stateMap}/>
+        <StateTable states={this.state.decisionMap} />
       </div>
     )
   }
