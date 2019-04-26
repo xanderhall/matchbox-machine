@@ -33,8 +33,7 @@ export default class MatchboxMachine extends React.Component {
     const highestWeight = moves.reduce((a, b) => Math.max(a, b));
 
     const usefulMoves = Object.keys(moves).filter(move => moves[move] === highestWeight);
-    //const randomMove = sample(usefulMoves);
-    const randomMove = usefulMoves[0];
+    const randomMove = sample(usefulMoves);
 
     // Store the move for this game
     this.setState({
@@ -78,12 +77,13 @@ export default class MatchboxMachine extends React.Component {
     const map = {...this.state.decisionMap};
     const history = this.state.history.slice();
     let lastMove, key;
-    
+    let newWeight = 0;
     do {
       lastMove = history.pop();
       key = JSON.stringify(lastMove.state);
-      map[key][lastMove.move] = 0;
-    } while (map[key].every(weight => !weight));
+      map[key][lastMove.move] = newWeight;
+      newWeight = 1;
+    } while (map[key].every(weight => weight === 0));
 
     this.setState({
       decisionMap: map
@@ -98,9 +98,6 @@ export default class MatchboxMachine extends React.Component {
           As you play, I'll get better at this game.
           Below, you can see the choices I'm making each time you make a move.
         </div>
-        <button class='btn btn-secondary' onClick={() => this.setState({decisionMap: {}})}>
-          Reset bot
-        </button>
         <StateTable states={this.state.decisionMap} />
       </div>
     )
