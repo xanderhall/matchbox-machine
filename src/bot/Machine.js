@@ -77,13 +77,11 @@ export default class MatchboxMachine extends React.Component {
     const map = {...this.state.decisionMap};
     const history = this.state.history.slice();
     let lastMove, key;
-    let newWeight = 0;
     do {
       lastMove = history.pop();
       key = JSON.stringify(lastMove.state);
-      map[key][lastMove.move] = newWeight;
-      newWeight = 1;
-    } while (map[key].every(weight => weight === 0));
+      map[key][lastMove.move] = 0;
+    } while (map[key].every(weight => !weight));
 
     this.setState({
       decisionMap: map
