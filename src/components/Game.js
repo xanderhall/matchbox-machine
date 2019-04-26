@@ -30,18 +30,17 @@ export default class Game extends Component {
       history: [...history, { squares: squares, lastMove: { square: i, player: player } }],
       turn: history.length,
     }, () => {
-      if (player === 'X') {
+      const endCondition = determineEndCondition(squares);
+      if (endCondition || player === 'X') {
         this.state.evaluateMachineMove({
           state: squares,
           turn: this.state.turn,
           legalMoves: getLegalMoves(squares),
-          endCondition: determineEndCondition(squares),
+          endCondition: endCondition,
           registerMove: this.handleClick
         })
       }
     });
-
-    // Allow machine to respond
   }
 
   render() {

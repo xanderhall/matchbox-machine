@@ -20,7 +20,7 @@ export default class MatchboxMachine extends React.Component {
     const state = props.state;
     const key = JSON.stringify(state);
     const map = {...this.state.decisionMap};
-    const history = this.state.history.slice(0, props.turn + 1);
+    const history = this.state.history.filter(h => h.turn < props.turn);
 
     // Check if current game state has previously been evaluated
     if (!map.hasOwnProperty(key)) {
@@ -36,9 +36,8 @@ export default class MatchboxMachine extends React.Component {
     const randomMove = sample(usefulMoves);
 
     // Store the move for this game
-    history.push( { state: state, move: randomMove, turn: props.turn });
     this.setState({
-      history: history,
+      history: [...history, { state: state, move: randomMove, turn: props.turn }],
       decisionMap: map
     }, () => props.registerMove(randomMove));
 
@@ -58,7 +57,15 @@ export default class MatchboxMachine extends React.Component {
   }
 
   resolveWin() {
-    // currently, do nothing
+    const history = this.state.history.slice();
+    const map = {...this.state.decisionMap};
+    history.forEach((o) => {
+      map[JSON.stringify(o.state)][o.move]++;
+    });
+
+    this.setState({
+      decisionMap: map
+    })
   }
 
   resolveTie() {
