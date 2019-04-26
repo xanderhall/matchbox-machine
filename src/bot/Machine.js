@@ -1,6 +1,6 @@
 import sample from 'lodash/sample';
 import React from 'react';
-import Board from '../components/Board'
+import StateTable from './StateTable';
 
 export default class MatchboxMachine extends React.Component {
   constructor(props) {
@@ -79,37 +79,6 @@ export default class MatchboxMachine extends React.Component {
     }
   }
 
-  renderMatchboxes() {
-    const rows = [];
-    this.state.stateMap.forEach((moves, key) => {
-      rows.push(
-        <tr key={key}>
-          <td><Board squares={JSON.parse(key)}/></td><td>{this.renderWeightTable(moves)}</td>
-        </tr>
-      );
-    });
-    return rows;
-  }
-
-  renderWeightTable(moves) {
-    const headers = [];
-    const bodies = [];
-    moves.forEach((weight, move) => {
-      headers.push(
-        <th key={move}>({Math.floor(move/3)},{move%3})</th>
-      );
-      bodies.push(
-        <td key={move} class={weight ? 'alert alert-success' : 'alert alert-danger'}>{weight}</td>
-      )
-    });
-    return (
-      <table class='table table-bordered text-center'>
-        <thead class='thead-light'><tr>{headers}</tr></thead>
-        <tbody><tr>{bodies}</tr></tbody>
-      </table>
-    )
-  }
-
   render() {
     return (
       <div className='machine'>
@@ -118,9 +87,7 @@ export default class MatchboxMachine extends React.Component {
           As you play, I'll get better at this game.
           Below, you can see the choices I'm making each time you make a move.
         </div>
-        <table className='matchboxes'>
-          {this.renderMatchboxes()}
-        </table>
+        <StateTable states={this.state.stateMap}/>
       </div>
     )
   }
