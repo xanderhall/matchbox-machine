@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Board from './Board';
-import InfoPanel from './InfoPanel';
-import MatchboxMachine from '../bot/Machine';
+import {Board, InfoPanel, Machine} from '.';
 
 export default class Game extends Component {
   constructor(props) {
@@ -60,18 +58,29 @@ export default class Game extends Component {
 
     return (
       <div className="container-fluid">
-        <Board
-          squares={current.squares}
-          onClick={this.handleClick}
-        />
-        <InfoPanel
-          status={status}
-          history={history}
-          jumpTo={(i) => this.setState({ turn: i })}
-        />
-        <MatchboxMachine
-          getMachineEvaluationFunction={(func) => this.setState({ evaluateMachineMove: func })}
-        />
+        <div className="row">
+          <div className="col-8">
+            <Board
+              size='large'
+              squares={current.squares}
+              onClick={this.handleClick}
+            />
+          </div>
+          <div className='col-4'>
+            <InfoPanel
+              status={status}
+              history={history}
+              jumpTo={(i) => this.setState({ turn: i })}
+            />
+          </div>
+        </div>
+        <div className='row'>
+          <div className="col-12">
+            <Machine
+              getMachineEvaluationFunction={(func) => this.setState({ evaluateMachineMove: func })}
+            />
+          </div>
+        </div>
       </div>
     );
   }
