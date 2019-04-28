@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/matchbox-machine/static/css/main.cfe766f3.chunk.css",
-    "main.js": "/matchbox-machine/static/js/main.a73c53db.chunk.js",
-    "main.js.map": "/matchbox-machine/static/js/main.a73c53db.chunk.js.map",
+    "main.js": "/matchbox-machine/static/js/main.5ae99391.chunk.js",
+    "main.js.map": "/matchbox-machine/static/js/main.5ae99391.chunk.js.map",
     "runtime~main.js": "/matchbox-machine/static/js/runtime~main.4bc065b5.js",
     "runtime~main.js.map": "/matchbox-machine/static/js/runtime~main.4bc065b5.js.map",
-    "static/js/2.2b399482.chunk.js": "/matchbox-machine/static/js/2.2b399482.chunk.js",
-    "static/js/2.2b399482.chunk.js.map": "/matchbox-machine/static/js/2.2b399482.chunk.js.map",
+    "static/js/2.3a12877f.chunk.js": "/matchbox-machine/static/js/2.3a12877f.chunk.js",
+    "static/js/2.3a12877f.chunk.js.map": "/matchbox-machine/static/js/2.3a12877f.chunk.js.map",
     "index.html": "/matchbox-machine/index.html",
-    "precache-manifest.945d1e09742122454049a653a8db939b.js": "/matchbox-machine/precache-manifest.945d1e09742122454049a653a8db939b.js",
+    "precache-manifest.47d1790693443f84ec69f866d3b54eae.js": "/matchbox-machine/precache-manifest.47d1790693443f84ec69f866d3b54eae.js",
     "service-worker.js": "/matchbox-machine/service-worker.js",
     "static/css/main.cfe766f3.chunk.css.map": "/matchbox-machine/static/css/main.cfe766f3.chunk.css.map"
   }
