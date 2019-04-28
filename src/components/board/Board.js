@@ -7,17 +7,21 @@ export default class Board extends React.Component {
 
   static propTypes = {
     squares: PropTypes.array.isRequired,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    size: PropTypes.string
   }
 
   static defaultProps = {
     onClick: () => {},
+    size: 'small'
   }
   
   renderSquare(i) {
     return (
       <Square
         key={i}
+        position={i}
+        size={this.props.size}
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
       />
@@ -26,14 +30,12 @@ export default class Board extends React.Component {
 
   render() {
     const squares = this.props.squares.map((square, i) => this.renderSquare(i));
-    const rows = chunk(squares, 3).map((row, i) => <tr key={i} className="board-row">{row}</tr>);
+    const rows = chunk(squares, 3).map((row, i) => <div key={i} className="board-row">{row}</div>);
 
     return (
-      <table className="game-board">
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
+      <div className="game-board">
+        {rows}
+      </div>
     );
   }
 }
