@@ -25,7 +25,7 @@ export default class MatchboxMachine extends React.Component {
     // Check if current game state has previously been evaluated
     if (!map.hasOwnProperty(key)) {
       map[key] = [];
-      props.legalMoves.forEach(move => map[key][move] = 2)
+      props.legalMoves.forEach(move => map[key][move] = 1)
     }
 
     // Get list of best moves. This setup allows for adjustment from winning.
@@ -95,6 +95,8 @@ export default class MatchboxMachine extends React.Component {
           <h1>Hi, I'm a machine!</h1>
           As you play, I'll get better at this game.
           Below, you can see the choices I'm making each time you make a move.
+          The numbers represent which moves are the best to make. 
+          I'll always pick the highest number from the list.
         </div>
         <StateTable states={this.state.decisionMap} />
       </div>
