@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/matchbox-machine/static/css/main.cfe766f3.chunk.css",
+    "main.css": "/matchbox-machine/static/css/main.ffdcf4bb.chunk.css",
     "main.js": "/matchbox-machine/static/js/main.5ae99391.chunk.js",
     "main.js.map": "/matchbox-machine/static/js/main.5ae99391.chunk.js.map",
     "runtime~main.js": "/matchbox-machine/static/js/runtime~main.4bc065b5.js",
@@ -8,8 +8,8 @@
     "static/js/2.3a12877f.chunk.js": "/matchbox-machine/static/js/2.3a12877f.chunk.js",
     "static/js/2.3a12877f.chunk.js.map": "/matchbox-machine/static/js/2.3a12877f.chunk.js.map",
     "index.html": "/matchbox-machine/index.html",
-    "precache-manifest.47d1790693443f84ec69f866d3b54eae.js": "/matchbox-machine/precache-manifest.47d1790693443f84ec69f866d3b54eae.js",
+    "precache-manifest.9cf0e69564b570a25d136f6fc7ee7698.js": "/matchbox-machine/precache-manifest.9cf0e69564b570a25d136f6fc7ee7698.js",
     "service-worker.js": "/matchbox-machine/service-worker.js",
-    "static/css/main.cfe766f3.chunk.css.map": "/matchbox-machine/static/css/main.cfe766f3.chunk.css.map"
+    "static/css/main.ffdcf4bb.chunk.css.map": "/matchbox-machine/static/css/main.ffdcf4bb.chunk.css.map"
   }
 }
