@@ -11,6 +11,7 @@ export default class Game extends Component {
         lastMove: null,
       }],
       turn: 0,
+      scores: {X: 0, O: 0}
     };
   }
 
@@ -24,11 +25,17 @@ export default class Game extends Component {
 
     const player = (this.state.turn % 2) === 0 ? 'X' : 'O';
     squares[i] = player;
+
+    const endCondition = determineEndCondition(squares);
+    const scores = {...this.state.scores};
+    if (endCondition) {
+      scores[player]++;
+    }
     this.setState({
       history: [...history, { squares: squares, lastMove: { square: i, player: player } }],
       turn: history.length,
+      scores: scores
     }, () => {
-      const endCondition = determineEndCondition(squares);
       if (endCondition || player === 'X') {
         this.state.evaluateMachineMove({
           state: squares,
@@ -70,6 +77,7 @@ export default class Game extends Component {
             <InfoPanel
               status={status}
               history={history}
+              scores={this.state.scores}
               jumpTo={(i) => this.setState({ turn: i })}
             />
           </div>

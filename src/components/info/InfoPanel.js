@@ -8,7 +8,7 @@ export default function InfoPanel(props) {
     <div className="game-info card">
       <div className='card-body'>
         <h5 className='card-title'>Game Info</h5>
-        <Scoreboard />
+        <Scoreboard scores={props.scores}/>
         <p className='card-text'>{props.status}</p>
         <StepButton step={0} jumpTo={props.jumpTo}></StepButton>
       </div>
