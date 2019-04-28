@@ -1,0 +1,24 @@
+.state-table {
+  @extend .table;
+  @extend .table-bordered;
+  table-layout: fixed;
+  text-align: center;
+  > thead {
+    @extend .thead-dark;
+    .board-header {
+      width: (12 - 10) / 12 * 100%;
+      @include media-breakpoint-down(sm) {
+        width: 40vw;
+      }
+    }
+    .weight-header {
+      width: (12 - 2) / 12 * 100%;
+    }
+  }
+
+  > tbody {
+    .weight-display {
+      overflow-x: hidden;
+    }
+  }
+}

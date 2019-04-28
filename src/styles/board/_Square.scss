@@ -1,0 +1,39 @@
+$off-white: rgb(243, 243, 243);
+
+@mixin square($size) {
+  width: $size;
+  min-width: $size;
+  height: $size;
+  min-height: $size;
+  font-size: $size * 0.6;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.even-square-small {
+  @include square(35px);
+  background: $off-white;
+}
+
+.odd-square-small {
+  @include square(35px);
+  background: #fff;
+}
+
+.even-square-large {
+  @include square(70px);
+  background: $off-white;
+}
+.odd-square-large {
+  @include square(70px);
+  background: #fff;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}

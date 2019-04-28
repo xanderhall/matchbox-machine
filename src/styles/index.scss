@@ -1,0 +1,15 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'board/Square';
+@import 'board/Board';
+@import 'bot/WeightTable';
+@import 'bot/StateTable';
+@import 'info/InfoPanel';
+
+// Fix for screen jump when scroll bar appears
+
+@media screen and (min-width: 320px) {
+  html {
+    margin-left: calc(100vw - 100%);
+    margin-right: 0;
+  }
+}
